@@ -1,0 +1,124 @@
+  @import url('https://fonts.googleapis.com/css2?family=cinzel:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+    :root {
+    --color-principal: #2B3A2F;
+    --color-secundario: #5F6B56;
+    --color-acento: #B87B5C;
+    --color-fondo: #F8F7F4;
+    --color-superficie: #EAE6DF;
+    --fuente-titulos: 'Cinzel', serif;
+    --fuente-texto: 'Lato', sans-serif;
+}
+
+
+    h1 {
+    font-family: var(--fuente-titulos);
+    }
+    
+    h2,
+    h3 {
+    font-family: var(--fuente-titulos);
+    background-color: var(--color-secundario);
+    color: var(--color-fondo);
+    padding: 10px 18px;
+    display: inline-block;
+
+    }
+   header {
+       background-color: var(--color-principal);
+       color: var(--color-fondo);
+       padding: 20px;
+   }
+  header nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    font-family: var(--fuente-texto);
+    color: var(--color-superficie);
+}
+a.header-link {
+     background-color: var(--color-acento);
+    color: var(--color-fondo);
+    padding: 4px 10px;
+    text-decoration: none;
+   }
+main {
+    padding: 30px;
+}
+   body {
+    background-color:var(--color-fondo);
+    color: var(--color-principal);
+    font-family: var(--fuente-texto);
+}
+img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+   a.catalogo {
+     background-color: var(--color-acento);
+    color: var(--color-fondo);
+    padding: 10px 18px;
+    text-decoration: none;
+   }
+
+
+   article {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-content h3 {
+    background-color: transparent;
+    color: var(--color-fondo);
+    padding: 0;
+    margin: 0 0 15px 0;
+    font-family: var(--fuente-titulos);
+}
+
+.footer-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-content li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.footer-content a {
+    color: var(--color-fondo);
+    text-decoration: none;
+    font-family: var(--fuente-texto);
+}
+
+.footer-content a:hover {
+    color: var(--color-acento);
+}
+
+.footer-bottom {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid var(--color-secundario);
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
