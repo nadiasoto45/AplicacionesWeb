@@ -73,9 +73,17 @@ img {
    }
 
 
-  article {
+  .especificaciones {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+}
+
+.cuidados {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style: none;
 }
 
 section.catalogo-grid {
@@ -90,6 +98,14 @@ div.equipo-grid {
     gap: 20px;
     align-items: center;
   
+}
+div.imagenes{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+
 }
 ul.timeline {
     list-style: none;
@@ -166,10 +182,25 @@ footer {
         flex-direction: column;
     }
     section.catalogo-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr) ;
+    }
+    .imagenes {
+        grid-template-columns: repeat(2, 1fr) !important;
     }
 
     div.equipo-grid {
         grid-template-columns: 1fr;
     }
    }
+
+   
+@media (max-width: 400px) {
+
+    section.catalogo-grid {
+        grid-template-columns: 1fr;
+    } 
+
+    .imagenes {
+        grid-template-columns: 1fr !important;
+    }
+}
