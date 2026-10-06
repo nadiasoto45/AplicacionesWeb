@@ -46,12 +46,15 @@
     gap: 20px;
     font-family: var(--fuente-texto);
     color: var(--color-superficie);
+    flex-wrap: wrap
+
 }
 a.header-link {
      background-color: var(--color-acento);
     color: var(--color-fondo);
     padding: 4px 10px;
     text-decoration: none;
+    white-space: nowrap;
    }
 main {
     padding: 30px;
