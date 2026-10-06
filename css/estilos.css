@@ -80,7 +80,7 @@ img {
 
 section.catalogo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     align-items: center;
 }
@@ -89,12 +89,19 @@ div.equipo-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     align-items: center;
-    style: none;
+  
 }
 ul.timeline {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+.planta-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 footer {

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantas - Vivero Raiz</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>  
+     <header>
+        <h1>Vivero Raíz</h1>
+        <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+         <nav>
+            <ul>
+                <li><a href="index.html" class="header-link">Inicio</a></li>
+                <li><a href="login.html" class="header-link">Iniciar sesión</a></li>
+                <li><a href="catalogo.html" class="header-link">Catálogo</a></li>
+                <li><a href="nosotros.html" class="header-link">Nosotros</a></li>
+                <li><a href="contacto.html" class="header-link">Contacto</a></li>
+                <li><a href="planta-form.html" class="header-link">Agregar Planta</a></li>
+            </ul>
+        </nav>
+    </header>    
+    <main>
+        <h2>Ficha de las plantas</h2> <br>
+         <form class="planta-form" action="/action_page.php" method="post">
+
+            <label for="nombre">Nombre de la planta:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="nombreCientifico">Nombre científico:</label>
+            <input type="text" id="nombreCientifico" name="nombreCientifico" required>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria" required>
+                <option value="interior">Interior</option>
+                <option value="exterior">Exterior</option>
+                <option value="aromatica">Aromática</option>
+                <option value="suculenta">Suculenta</option>    
+            </select>
+            <label for="luz">Luz necesaria:</label>
+            <select id="luz" name="luz" required>
+                <option value="sol-pleno">Sol pleno</option>
+                <option value="media-sombra">Media sombra</option>
+                <option value="sombra">Sombra</option>
+            </select>
+            <label for="riego">Riego:</label>
+            <select id="riego" name="riego" required>
+                <option value="bajo">Bajo</option>
+                <option value="medio">Medio</option>
+                <option value="alto">Alto</option>
+            </select>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" step="0.01" required> <!-- preguntar al profe -->
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" min="0" required> <!-- preguntar al profe -->
+            <label for="fechaIngreso">Fecha de ingreso:</label>
+            <input type="date" id="fechaIngreso" name="fechaIngreso" required>
+            <label for="aptaMascotas">Apta para mascotas:</label>
+            <input type="checkbox" id="aptaMascotas" name="aptaMascotas">
+            <label for="etiquetas">Etiquetas:</label>
+            <select id="etiquetas" name="etiquetas" multiple>
+                <option value="purificadora">Purificadora</option>
+                <option value="floracion">Floración</option>
+                <option value="colgante">Colgante</option>
+                <option value="resistente">Resistente</option>
+            </select>
+            <label for="foto">Foto de la planta:</label>
+            <input type="url" id="foto" name="foto" placeholder="URL de la foto de la planta">
+            <label for="notas">Cuidados particulares:</label>
+            <textarea id="notas" name="notas" rows="4" maxlength="300" placeholder="Describe los cuidados particulares de la planta en detalle..."></textarea>
+            <input type="submit" value="Guardar"> <input type="reset" value="Limpiar">
+        </form>
+    </main>
+<footer>
+    <div class="footer-content"> 
+    <h3> Redes Sociales</h3>
+    <ul>
+        <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
+        <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
+    </ul>
+    </div>
+    <br>
+    <br>
+    <div class="footer-bottom">
+    <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
+    </div>
+
+</footer>
+</body>
+
+</html>
