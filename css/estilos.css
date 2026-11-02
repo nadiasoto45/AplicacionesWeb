@@ -25,6 +25,8 @@
     color: var(--color-fondo);
     padding: 10px 18px;
     display: inline-block;
+    flex: 1;
+    border-radius: 5px;
 
     }
    header {
@@ -46,15 +48,16 @@
     gap: 20px;
     font-family: var(--fuente-texto);
     color: var(--color-superficie);
-    flex-wrap: wrap
+    flex-wrap: wrap;
 
 }
 a.header-link {
      background-color: var(--color-acento);
     color: var(--color-fondo);
-    padding: 4px 10px;
+    padding: 10px 10px;
     text-decoration: none;
     white-space: nowrap;
+    border-radius: 5px;
    }
 main {
     padding: 30px;
@@ -115,13 +118,7 @@ ul.timeline {
     padding: 0;
     margin: 0;
 }
-.planta-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-    max-width: 400px;
-    margin: 0 auto;
-}
+
 
 footer {
     background-color: var(--color-principal);
@@ -206,4 +203,285 @@ footer {
     .imagenes {
         grid-template-columns: 1fr !important;
     }
+
+
 }
+
+/* Estilos para los formularios */  
+
+ 
+form.planta-form {
+    display: grid;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 480px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f6f5f5 !important; 
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    align-items: flex-start;
+     
+} 
+
+.planta-main,
+.login-main {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 40px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+
+}
+
+.planta-intro,
+.login-intro {
+    padding: 20px;
+}
+
+.planta-intro p,
+.login-intro p {
+    line-height: 1.7;
+}
+
+.login-registro {
+    grid-column: 1 / -1;
+    margin: 0;
+}
+
+.planta-main .planta-form,
+.login-main .login-form {
+    width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+@media (max-width: 750px) {
+    .planta-main {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .planta-main .planta-form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .login-main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        padding: 16px;
+        margin: 15px auto;
+    }
+
+    .login-intro {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .login-intro h2 {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .login-main .formulario {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .login-registro {
+        grid-column: auto;
+        margin: 0;
+    }
+}
+
+.registro-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+    gap: 40px;
+    align-items: start;
+    max-width: 1050px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.registro-intro {
+    min-width: 0;
+}
+
+.registro-intro p {
+    line-height: 1.7;
+}
+
+.registro-main .formulario {
+    width: 100%;
+    max-width: 440px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Adaptación a móviles y tablets estrechas */
+@media (max-width: 750px) {
+    .registro-main {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        padding: 16px;
+        margin: 15px auto;
+    }
+
+    .registro-intro {
+        width: 100%;
+    }
+
+    .registro-main .formulario {
+        max-width: none;
+        width: 100%;
+    }
+}
+
+/* Formulario de registro */
+form.formulario {
+    max-width: 440px;
+    width: 100%;
+    margin: 0;
+    padding: 24px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-superficie);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(43, 58, 47, 0.10);
+}
+
+/* Agrupación de cada etiqueta y campo */
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+/* Etiquetas */
+.campo-formulario label {
+    color: var(--color-principal);
+    font-weight: 700;
+}
+
+/* Campos */
+.campo-formulario input,
+select,
+.campo-formulario textarea
+ {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    border: 1px solid #C8CEC5;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: var(--color-principal);
+    font: inherit;
+}
+
+/* Foco visible */
+.campo-formulario input:focus-visible {
+    outline: 2px solid var(--color-secundario);
+    outline-offset: 2px;
+}
+
+/* Botones */
+.acciones-formulario {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.acciones-formulario input {
+    flex: 1;
+    padding: 11px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-principal);
+    color: #FFFFFF;
+    font: inherit;
+    cursor: pointer;
+}
+
+.acciones-formulario input[type="reset"] {
+    background-color: var(--color-acento);
+}
+
+.acciones-formulario input:hover {
+    opacity: 0.85;
+}
+
+.acciones-formulario button {
+    flex: 1;
+    padding: 11px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-principal);
+    color: #FFFFFF;
+    font: inherit;
+    cursor: pointer;
+}
+
+.acciones-formulario button[type="button"] {
+    background-color: var(--color-acento);
+}
+
+.acciones-formulario button:hover {
+    opacity: 0.85;
+}
+/* Regla especifica para los Checkbox*/
+/* Checkbox: casilla y texto en la misma línea */
+
+.campo-checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.campo-checkbox input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.campo-checkbox label {
+    cursor: pointer;
+}
+/* Index- contacto */
+.contacto {
+    margin-top: 30px;
+}
+
+.datos-contacto {
+    background-color: var(--color-superficie);
+    padding: 10px 10px;
+    border-radius: 8px;
+    max-width: 450px;
+}
+
+.datos-contacto p {
+    margin: 10px 0;
+}
+
+.datos-contacto a {
+    color: var(--color-principal);
+    text-decoration: none;
+}
+
+.datos-contacto a:hover {
+    color: var(--color-acento);
+    text-decoration: underline;
+}
+
+

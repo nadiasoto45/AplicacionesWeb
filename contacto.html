@@ -25,30 +25,39 @@
     </header>
     <main>
         <h2>Contactanos</h2>
-        <form> 
-            <label for="Nombre"> Nombre y Apellido </label><br>
-            <input type="text" id="Nombre" name="Nombre" placeholder="Tu nombre completo"><br>
-            <label for="Telefono"> Teléfono </label><br>
-            <input type="tel" id="Telefono" name="Telefono" placeholder="Tu número de teléfono"><br>
-            <label for="email">Ingresa tu email </label><br>
-            <input type="email" id="email" name="email" placeholder="Tu dirección de email" required><br>
-            <label for="motivo"> Motivo de contacto </label><br>
-            <select id="motivo" name="motivo">
-                <option value="consulta">Consulta</option>
-                <option value="sugerencia">Sugerencia</option>
-                <option value="reclamo">Reclamo</option>
-            </select> 
-            <br>
-            <br>
-            <textarea id="mensaje" name="Escribe tu mensaje" rows="6" cols="20" maxlength="200"></textarea>   
-            <br>
-            <input type="checkbox" id="novedades" name="novedades">
-            <label for="novedades">Quiero recibir las novedades del vivero</label>
-            <br>
-            <br>
-            <input type="submit" value="Enviar"> <input type="reset" value="Limpiar">
-            <br>
-    
+        <form class="formulario"> 
+            <div class="campo-formulario">
+                <label for="Nombre"> Nombre y Apellido </label>
+                <input type="text" id="Nombre" name="Nombre" placeholder="Tu nombre completo">
+            </div>
+            <div class="campo-formulario">
+                <label for="Telefono"> Teléfono </label>
+                <input type="tel" id="Telefono" name="Telefono" placeholder="Tu número de teléfono">
+            </div>
+            <div class="campo-formulario">
+                <label for="email">Ingresa tu email </label>
+                <input type="email" id="email" name="email" placeholder="Tu dirección de email" required>
+            </div>
+            <div class="campo-formulario">
+                <label for="motivo"> Motivo de contacto </label>
+                <select id="motivo" name="motivo">
+                    <option value="consulta">Consulta</option>
+                    <option value="sugerencia">Sugerencia</option>
+                    <option value="reclamo">Reclamo</option>
+                </select>
+            </div>
+            <div class="campo-formulario">
+                <label for="mensaje">Escribe tu mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="6" cols="20" maxlength="200"></textarea>
+            </div>
+            <div class="campo-formulario campo-checkbox">
+                <input type="checkbox" id="novedades" name="novedades">
+                <label for="novedades">Quiero recibir las novedades del vivero</label>
+            </div>
+            <div class="acciones-formulario">
+                <input type="submit" value="Enviar">
+                <button type="button" onclick="location.href='contacto.html'">Limpiar</button>
+            </div>
         </form>
 
     </main>

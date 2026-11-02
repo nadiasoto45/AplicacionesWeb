@@ -21,14 +21,29 @@
             </ul>
         </nav>
     </header>    
-    <main>
-        <h2>Ficha de las plantas</h2> <br>
-         <form class="planta-form" action="/action_page.php" method="post">
+  <main class="planta-main">
 
+    <section class="planta-intro">
+        <h2>Ficha de las plantas</h2>
+        <p>
+            Completá los datos para incorporar una nueva
+            planta al catálogo de Vivero Raíz.
+        </p>
+        <p>
+            Registrá sus características, necesidades
+            de luz, riego y disponibilidad.
+        </p>
+    </section>
+         <form class="planta-form" action="/action_page.php" method="post">
+        <div class="campo-formulario">      
             <label for="nombre">Nombre de la planta:</label>
             <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="campo-formulario">    
             <label for="nombreCientifico">Nombre científico:</label>
             <input type="text" id="nombreCientifico" name="nombreCientifico" required>
+        </div>
+        <div class="campo-formulario">      
             <label for="categoria">Categoría:</label>
             <select id="categoria" name="categoria" required>
                 <option value="interior">Interior</option>
@@ -36,26 +51,40 @@
                 <option value="aromatica">Aromática</option>
                 <option value="suculenta">Suculenta</option>    
             </select>
+        </div>
+        <div class="campo-formulario">
             <label for="luz">Luz necesaria:</label>
             <select id="luz" name="luz" required>
                 <option value="sol-pleno">Sol pleno</option>
                 <option value="media-sombra">Media sombra</option>
                 <option value="sombra">Sombra</option>
             </select>
+        </div>
+        <div class="campo-formulario">        
             <label for="riego">Riego:</label>
             <select id="riego" name="riego" required>
                 <option value="bajo">Bajo</option>
                 <option value="medio">Medio</option>
                 <option value="alto">Alto</option>
             </select>
+        </div>
+        <div class="campo-formulario">    
             <label for="precio">Precio:</label>
             <input type="number" id="precio" name="precio" step="0.01" required> <!-- preguntar al profe -->
+        </div>  
+        <div class="campo-formulario">  
             <label for="stock">Stock:</label>
             <input type="number" id="stock" name="stock" min="0" required> <!-- preguntar al profe -->
+        </div>
+        <div class="campo-formulario">    
             <label for="fechaIngreso">Fecha de ingreso:</label>
             <input type="date" id="fechaIngreso" name="fechaIngreso" required>
+        </div>
+        <div class="campo-formulario campo-checkbox">    
             <label for="aptaMascotas">Apta para mascotas:</label>
             <input type="checkbox" id="aptaMascotas" name="aptaMascotas">
+        </div>
+        <div class="campo-formulario">
             <label for="etiquetas">Etiquetas:</label>
             <select id="etiquetas" name="etiquetas" multiple>
                 <option value="purificadora">Purificadora</option>
@@ -63,11 +92,18 @@
                 <option value="colgante">Colgante</option>
                 <option value="resistente">Resistente</option>
             </select>
+        </div>
+        <div class="campo-formulario">    
             <label for="foto">Foto de la planta:</label>
             <input type="url" id="foto" name="foto" placeholder="URL de la foto de la planta">
+        </div>
+        <div class="campo-formulario">    
             <label for="notas">Cuidados particulares:</label>
             <textarea id="notas" name="notas" rows="4" maxlength="300" placeholder="Describe los cuidados particulares de la planta en detalle..."></textarea>
+        </div>
+        <div class="acciones-formulario">
             <input type="submit" value="Guardar"><input type="reset" value="Limpiar">
+        </div>
         </form>
     </main>
 <footer>
