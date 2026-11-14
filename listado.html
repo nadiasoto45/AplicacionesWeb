@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de plantas - Vivero Raíz</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Vivero Raíz</h1>
+        <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+
+        <nav>
+            <ul>
+                <li><a href="index.html" class="header-link">Inicio</a></li>
+                <li><a href="login.html" class="header-link">Iniciar sesión</a></li>
+                <li><a href="catalogo.html" class="header-link">Catálogo</a></li>
+                <li><a href="nosotros.html" class="header-link">Nosotros</a></li>
+                <li><a href="contacto.html" class="header-link">Contacto</a></li>
+                <li><a href="planta-form.html" class="header-link">Agregar Planta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="listado-plantas">
+
+            <h2>Administración de plantas</h2>
+
+            <p>Desde aquí podés consultar y administrar las plantas del vivero.</p>
+
+            <a href="planta-form.html" class="catalogo">+ Agregar planta</a>
+
+            <div class="tabla-contenedor">
+
+                <table class="tabla-plantas">
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Nombre científico</th>
+                            <th>Categoría</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Monstera</td>
+                            <td>Monstera deliciosa</td>
+                            <td>Interior</td>
+                            <td>18,50 €</td>
+                            <td>10</td>
+                            <td>
+                                <a href="planta-form.html" class="accion-editar">Editar</a>
+                                <button type="button" class="accion-eliminar">Eliminar</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Lavanda</td>
+                            <td>Lavandula angustifolia</td>
+                            <td>Aromática</td>
+                            <td>8,50 €</td>
+                            <td>15</td>
+                            <td>
+                                <a href="planta-form.html" class="accion-editar">Editar</a>
+                                <button type="button" class="accion-eliminar">Eliminar</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>Olivo</td>
+                            <td>Olea europaea</td>
+                            <td>Exterior</td>
+                            <td>35,00 €</td>
+                            <td>5</td>
+                            <td>
+                                <a href="planta-form.html" class="accion-editar">Editar</a>
+                                <button type="button" class="accion-eliminar">Eliminar</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Redes Sociales</h3>
+            <ul>
+                <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
+                <li><a href="https://www.facebook.com/">Facebook</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

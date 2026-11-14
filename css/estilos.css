@@ -269,6 +269,7 @@ form.planta-form {
     .planta-main .planta-form {
         max-width: 100%;
     }
+    
 }
 
 @media (max-width: 600px) {
@@ -376,7 +377,7 @@ form.formulario {
 
 /* Campos */
 .campo-formulario input,
-select,
+.campo-formulario select,
 .campo-formulario textarea
  {
     width: 100%;
@@ -440,7 +441,6 @@ select,
     opacity: 0.85;
 }
 /* Regla especifica para los Checkbox*/
-/* Checkbox: casilla y texto en la misma línea */
 
 .campo-checkbox {
     display: flex;
@@ -483,5 +483,106 @@ select,
     color: var(--color-acento);
     text-decoration: underline;
 }
+/*Listado de plantas */
 
+.listado-plantas {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
 
+.listado-plantas p {
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+.tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 25px;
+    border-radius: 8px;
+}
+.tabla-plantas {
+    width: 100%;
+    min-width: 750px;
+    border-collapse: collapse;
+    background-color: white;
+    color: var(--color-principal);
+}
+
+.tabla-plantas th {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    padding: 14px;
+    text-align: left;
+}
+
+.tabla-plantas td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--color-superficie);
+}
+
+.tabla-plantas tbody tr:nth-child(even) {
+    background-color: var(--color-superficie);
+}
+
+.tabla-plantas tbody tr:hover {
+    background-color: #e2e8df;
+}
+.accion-editar,
+.accion-eliminar {
+    display: inline-block;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    font-family: var(--fuente-texto);
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.accion-editar {
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+.accion-editar:hover {
+    background-color: var(--color-principal);
+    transform: translateY(-2px);
+}
+
+.accion-eliminar {
+    background-color: #a94442;
+    color: white;
+}
+
+.accion-eliminar:hover {
+    background-color: #812d2b;
+    transform: translateY(-2px);
+}
+.accion-editar:focus-visible,
+.accion-eliminar:focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+
+    .listado-plantas {
+        padding: 10px;
+    }
+
+    .tabla-plantas {
+        min-width: 750px;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .listado-plantas {
+        padding: 5px;
+    }
+
+}
