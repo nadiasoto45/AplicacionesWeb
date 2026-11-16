@@ -8,22 +8,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/validaciones.js" defer></script>
 </head>
 
 <body>
-    <header>
-         <h1>Vivero Raíz</h1>
-        <img  class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+   <header>
+        <h1>Vivero Raíz</h1>
+        <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+            aria-controls="menu-principal">
+            ☰
+        </button>
         <nav>
-            <ul>
+            <ul id="menu-principal">
                 <li><a href="index.html" class="header-link">Inicio</a></li>
-                <li><a href="login.html" class="header-link">Iniciar sesión</a></li>
                 <li><a href="catalogo.html" class="header-link">Catálogo</a></li>
                 <li><a href="nosotros.html" class="header-link">Nosotros</a></li>
                 <li><a href="contacto.html" class="header-link">Contacto</a></li>
-                <li><a href="planta-form.html" class="header-link">Agregar Planta</a></li>
             </ul>
-
         </nav>
     </header>
     <main class="catalogo">

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,45 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/validaciones.js" defer></script>
 </head>
+
 <body>
-<header>
-     <h1>Vivero Raíz</h1>
-    <img  class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+    <header>
+        <h1>Vivero Raíz</h1>
+        <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+            aria-controls="menu-principal">
+            ☰
+        </button>
         <nav>
-           <ul>
+            <ul id="menu-principal">
                 <li><a href="index.html" class="header-link">Inicio</a></li>
-                <li><a href="login.html" class="header-link">Iniciar sesión</a></li>
                 <li><a href="catalogo.html" class="header-link">Catálogo</a></li>
                 <li><a href="nosotros.html" class="header-link">Nosotros</a></li>
                 <li><a href="contacto.html" class="header-link">Contacto</a></li>
-                <li><a href="planta-form.html" class="header-link">Agregar Planta</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <h2>Contactanos</h2>
-        <form class="formulario"> 
+        <form class="formulario" id="form-contacto" novalidate>
             <div class="campo-formulario">
-                <label for="Nombre"> Nombre y Apellido </label>
-                <input type="text" id="Nombre" name="Nombre" placeholder="Tu nombre completo">
+                <label for="nombre"> Nombre y Apellido </label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
             </div>
             <div class="campo-formulario">
-                <label for="Telefono"> Teléfono </label>
-                <input type="tel" id="Telefono" name="Telefono" placeholder="Tu número de teléfono">
+                <label for="telefono"> Teléfono </label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono">
             </div>
             <div class="campo-formulario">
                 <label for="email">Ingresa tu email </label>
                 <input type="email" id="email" name="email" placeholder="Tu dirección de email" required>
             </div>
             <div class="campo-formulario">
-                <label for="motivo"> Motivo de contacto </label>
-                <select id="motivo" name="motivo">
+                <label for="motivo"> Motivo de contacto</label>
+                <select id="motivo" name="motivo" required>
+                    <option value="" selected disabled>Seleccioná un motivo</option>
                     <option value="consulta">Consulta</option>
                     <option value="sugerencia">Sugerencia</option>
                     <option value="reclamo">Reclamo</option>
@@ -48,7 +54,7 @@
             </div>
             <div class="campo-formulario">
                 <label for="mensaje">Escribe tu mensaje</label>
-                <textarea id="mensaje" name="mensaje" rows="6" cols="20" maxlength="200"></textarea>
+                <textarea id="mensaje" name="mensaje" rows="6" cols="20" maxlength="200" required></textarea>
             </div>
             <div class="campo-formulario campo-checkbox">
                 <input type="checkbox" id="novedades" name="novedades">
@@ -56,26 +62,28 @@
             </div>
             <div class="acciones-formulario">
                 <input type="submit" value="Enviar">
-                <button type="button" onclick="location.href='contacto.html'">Limpiar</button>
+                <button type="reset">Limpiar</button>
             </div>
+            <p class="mensaje-error" id="mensaje-error" role="alert" hidden></p>
+            <p class="mensaje-exito" id="mensaje-exito" role="status" hidden></p>
         </form>
 
     </main>
-<footer>
-    <div class="footer-content"> 
-    <h3> Redes Sociales</h3>
-    <ul>
-        <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
-        <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
-    </ul>
-    </div>
-    <br>
-    <br>
-    <div class="footer-bottom">
-    <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
-    </div>
+    <footer>
+        <div class="footer-content">
+            <h3> Redes Sociales</h3>
+            <ul>
+                <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
+                <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
+        </div>
 
-</footer>
+    </footer>
 
 </body>
 

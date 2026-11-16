@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,84 +8,97 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/validaciones.js" defer></script>
 </head>
+
 <body>
-<header>
-     <h1>Vivero Raíz</h1>
-        <img  class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+    <header>
+        <h1>Vivero Raíz</h1>
+        <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+            aria-controls="menu-principal">
+            ☰
+        </button>
         <nav>
-            <ul>
-            <li><a href="index.html" class="header-link">Inicio</a></li>
-            <li><a href="login.html" class="header-link">Iniciar sesión</a></li>
-            <li><a href="catalogo.html" class="header-link">Catálogo</a></li>
-            <li><a href="nosotros.html" class="header-link">Nosotros</a></li>
-            <li><a href="contacto.html" class="header-link">Contacto</a></li>
-            <li><a href="planta-form.html" class="header-link">Agregar Planta</a></li>
-        </nav> 
+            <ul id="menu-principal">
+                <li><a href="index.html" class="header-link">Inicio</a></li>
+                <li><a href="catalogo.html" class="header-link">Catálogo</a></li>
+                <li><a href="nosotros.html" class="header-link">Nosotros</a></li>
+                <li><a href="contacto.html" class="header-link">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
-   <main class="registro-main">
+    <main class="registro-main">
 
-    <section class="registro-intro">
-        <h2>Registro</h2>
-        <p>
-            Creá tu cuenta en Vivero Raíz para disfrutar
-            de nuestras novedades y funcionalidades.
-        </p>
-        <p>
-            Completá tus datos personales para comenzar.
-        </p>
-    </section>  
+        <section class="registro-intro">
+            <h2>Registro</h2>
+            <p>
+                Creá tu cuenta en Vivero Raíz para disfrutar
+                de nuestras novedades y funcionalidades.
+            </p>
+            <p>
+                Completá tus datos personales para comenzar.
+            </p>
+        </section>
         <form class="formulario" action="/action_page.php">
-        <fieldset>
-            <legend>Ingresa tus datos a continuación:</legend>
-            
-            <div class="campo-formulario">
-                <label for="Nombre">Nombre</label>
-                <input type="text" id="Nombre" name="Nombre" required>
-            </div>
+            <fieldset>
+                <legend>Ingresa tus datos a continuación:</legend>
 
-            <div class="campo-formulario">
-                <label for="Apellidos">Apellidos</label>
-                <input type="text" id="Apellidos" name="Apellidos" required>
-            </div>
-            <div class="campo-formulario">
-                <label for="Telefono">Teléfono</label>
-                <input type="tel" id="Telefono" name="Telefono">
-            </div>
-            <div class="campo-formulario">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="campo-formulario">
-                <label for="Contraseña">Contraseña:</label>
-                <input type="password" id="Contraseña" name="Contraseña" required>
-            </div>
-            <div class="campo-formulario">
-                <label for="fecha-nacimiento">Fecha de nacimiento:</label>
-                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
-            </div>  
-             <div class="acciones-formulario">
-            <input type="submit" value="Enviar"> <input type="reset" value="Limpiar">
-            </div>
-        </fieldset>
-</form>
+                <div class="campo-formulario">
+                    <label for="Nombre">Nombre</label>
+                    <input type="text" id="Nombre" name="Nombre" required>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="Apellidos">Apellidos</label>
+                    <input type="text" id="Apellidos" name="Apellidos" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="Telefono">Teléfono</label>
+                    <input type="tel" id="Telefono" name="Telefono">
+                </div>
+                <div class="campo-formulario">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="Contraseña">Contraseña:</label>
+                    <input type="password" id="Contraseña" name="Contraseña" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="RContraseña">Repetir Contraseña:</label>
+                    <input type="password" id="RContraseña" name="RContraseña" required>
+                </div>
+                <div class="campo-formulario">
+                    <label for="fecha-nacimiento">Fecha de nacimiento:</label>
+                    <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+                </div>
+                <div class="campo-terminos">
+                    <input type="checkbox" id="terminos" name="terminos" required>
+                    <label for="terminos">Acepto los términos y condiciones</label>
+                </div>
+                <div class="acciones-formulario">
+                    <input type="submit" value="Enviar"> <input type="reset" value="Limpiar">
+                </div>
+            </fieldset>
+        </form>
     </main>
 
     <footer>
-    <div class="footer-content"> 
-    <h3> Redes Sociales</h3>
-    <ul>
-        <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
-        <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
-    </ul>
-    </div>
-    <br>
-    <br>
-    <div class="footer-bottom">
-    <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
-    </div>
+        <div class="footer-content">
+            <h3> Redes Sociales</h3>
+            <ul>
+                <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
+                <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
+        </div>
 
-</footer>
+    </footer>
 
 </body>
 

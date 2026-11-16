@@ -5,82 +5,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivero Raiz</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/validaciones.js" defer></script>
 </head>
- 
-<body>
-<header>
-      <h1>Vivero Raíz</h1>
-    <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
-      <nav>
-           <ul>
-                <li><a href="index.html" class="header-link">Inicio</a></li>
-                <li><a href="login.html" class="header-link">Iniciar sesión</a></li>
-                <li><a href="catalogo.html" class="header-link">Catálogo</a></li>   
-                <li><a href="nosotros.html" class="header-link">Nosotros</a></li>  
-                <li><a href="contacto.html" class="header-link">Contacto</a></li>
-                <li><a href="planta-form.html" class="header-link">Agregar Planta</a></li>   
-            </ul>
-        </nav>  
-        
-</header>  
-<main>
-    <h2>Bienvenidos a Vivero Raíz</h2> 
-    <img src="img/vivero_2.jpg" alt="Mi vivero"> <br />
-    <h3>El mayor vivero de Leganés</h3> 
-    <p>Somos una empresa familiar con 30 años de trayectoria dedicada a la producción y venta de plantas, árboles y servicios de jardinería.</p>
-    <P>Lo que comenzó como un pequeño sueño en el jardín de nuestros abuelos, hoy es un espacio donde fusionamos la sabiduría tradicional con las técnicas de cultivo más sostenibles. </P>
-    <p>Para nosotros, cada planta no es solo un producto, sino el resultado de generaciones de amor por la naturaleza.</P>    
-    
-        <section>
-        <h3>Servicios</h3>
-        <ul>
-            <li>Venta de plantas y árboles</li>
-            <li>Diseño y mantenimiento de jardines</li>
-            <li>Asesoramiento en jardinería</li>
-        </ul>
-    </section>
-    <section>
-        <h3>Ubicación</h3>
-        <p>Nos encontramos en Leganés, Madrid. Visítanos y descubre la belleza de la naturaleza en nuestro vivero.</p>
-    </section>
-    <section>
-        <h3>Horario de atención</h3>
-        <p>Lunes a viernes: 9:00 - 18:00</p>
-        <p>Sábados: 10:00 - 14:00</p>
-        <p>Domingos: Cerrado</p>        
-    </section>
-    <section class="contacto">   
-        <h3>Contacto</h3>
-        <div class="datos-contacto">
-        <p>Teléfono:
-            <a href="tel:+34123456789">+34 123 456 789</a> 
-        </p>
-        <p>Email: 
-            <a href="mailto:viveroraiz@gmail.com">viveroraiz@gmail.com</a>
-        </p>
-        </div>
-    </section>
-    <br>
-</main>
-<footer>
-    <div class="footer-content"> 
-    <h3> Redes Sociales</h3>
-    <ul>
-        <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
-        <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
-    </ul>
-    </div>
-    <br>
-    <br>
-    <div class="footer-bottom">
-    <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
-    </div>
 
-</footer>
+<body>
+    <header>
+        <h1>Vivero Raíz</h1>
+        <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+            aria-controls="menu-principal">
+            ☰
+        </button>
+        <nav>
+            <ul id="menu-principal">
+                <li><a href="index.html" class="header-link">Inicio</a></li>
+                <li><a href="catalogo.html" class="header-link">Catálogo</a></li>
+                <li><a href="nosotros.html" class="header-link">Nosotros</a></li>
+                <li><a href="contacto.html" class="header-link">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Bienvenidos a Vivero Raíz</h2>
+        <img src="img/vivero_2.jpg" alt="Mi vivero"> <br />
+        <h3>El mayor vivero de Leganés</h3>
+        <p>Somos una empresa familiar con 30 años de trayectoria dedicada a la producción y venta de plantas, árboles y
+            servicios de jardinería.</p>
+        <P>Lo que comenzó como un pequeño sueño en el jardín de nuestros abuelos, hoy es un espacio donde fusionamos la
+            sabiduría tradicional con las técnicas de cultivo más sostenibles. </P>
+        <p>Para nosotros, cada planta no es solo un producto, sino el resultado de generaciones de amor por la
+            naturaleza.</P>
+
+        <section>
+            <h3>Servicios</h3>
+            <ul>
+                <li>Venta de plantas y árboles</li>
+                <li>Diseño y mantenimiento de jardines</li>
+                <li>Asesoramiento en jardinería</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Ubicación</h3>
+            <p>Nos encontramos en Leganés, Madrid. Visítanos y descubre la belleza de la naturaleza en nuestro vivero.
+            </p>
+        </section>
+        <section>
+            <h3>Horario de atención</h3>
+            <p>Lunes a viernes: 9:00 - 18:00</p>
+            <p>Sábados: 10:00 - 14:00</p>
+            <p>Domingos: Cerrado</p>
+        </section>
+        <section class="contacto">
+            <h3>Contacto</h3>
+            <div class="datos-contacto">
+                <p>Teléfono:
+                    <a href="tel:+34123456789">+34 123 456 789</a>
+                </p>
+                <p>Email:
+                    <a href="mailto:viveroraiz@gmail.com">viveroraiz@gmail.com</a>
+                </p>
+            </div>
+        </section>
+        <br>
+        <section class="acceso-intranet">
+
+            <h3>¿Trabajás en el vivero?</h3>
+
+            <p>
+                Accedé a la administración para gestionar las plantas,
+                actualizar precios y controlar el stock.
+            </p>
+
+            <a href="login.html" class="catalogo">
+                Acceder a la intranet
+            </a>
+
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <h3> Redes Sociales</h3>
+            <ul>
+                <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
+                <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
+        </div>
+
+    </footer>
 
 </body>
 
