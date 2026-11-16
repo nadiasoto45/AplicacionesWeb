@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión - Vivero Raiz</title>
+    <title>Registro- Vivero Raiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/estilos.css">
@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <header>
         <h1>Vivero Raíz</h1>
         <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
@@ -40,34 +41,34 @@
                 Completá tus datos personales para comenzar.
             </p>
         </section>
-        <form class="formulario" action="/action_page.php">
+        <form class="formulario" id="form-registro" novalidate>
             <fieldset>
                 <legend>Ingresa tus datos a continuación:</legend>
 
                 <div class="campo-formulario">
-                    <label for="Nombre">Nombre</label>
-                    <input type="text" id="Nombre" name="Nombre" required>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
                 </div>
 
                 <div class="campo-formulario">
-                    <label for="Apellidos">Apellidos</label>
-                    <input type="text" id="Apellidos" name="Apellidos" required>
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" id="apellidos" name="apellidos" required>
                 </div>
                 <div class="campo-formulario">
-                    <label for="Telefono">Teléfono</label>
-                    <input type="tel" id="Telefono" name="Telefono">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
                 </div>
                 <div class="campo-formulario">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="campo-formulario">
-                    <label for="Contraseña">Contraseña:</label>
-                    <input type="password" id="Contraseña" name="Contraseña" required>
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
                 </div>
                 <div class="campo-formulario">
-                    <label for="RContraseña">Repetir Contraseña:</label>
-                    <input type="password" id="RContraseña" name="RContraseña" required>
+                    <label for="repetir-password">Repetir Contraseña:</label>
+                    <input type="password" id="repetir-password" name="repetir-password" required>
                 </div>
                 <div class="campo-formulario">
                     <label for="fecha-nacimiento">Fecha de nacimiento:</label>
@@ -80,6 +81,8 @@
                 <div class="acciones-formulario">
                     <input type="submit" value="Enviar"> <input type="reset" value="Limpiar">
                 </div>
+                <p class="mensaje-error" id="mensaje-error" role="alert" hidden></p>
+                <p class="mensaje-exito" id="mensaje-exito" role="status" hidden></p>
             </fieldset>
         </form>
     </main>
