@@ -194,7 +194,7 @@ footer {
    }
 
    
-@media (max-width: 400px) {
+@media (max-width: 450px) {
 
     section.catalogo-grid {
         grid-template-columns: 1fr;
@@ -681,5 +681,94 @@ form.formulario {
     header nav ul.menu-visible {
     display: flex;
 }
+
+}
+/* BUSQUEDA Y FILTROS DEL CATALOGO */
+
+.filtros-catalogo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 20px;
+    margin: 20px 0;
+    background-color: var(--color-superficie);
+    border-radius: 8px;
+}
+
+.filtros-catalogo label {
+    font-weight: 700;
+    color: var(--color-principal);
+}
+
+.filtros-catalogo input,
+.filtros-catalogo select {
+    padding: 10px 12px;
+    border: 1px solid #C8CEC5;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: var(--color-principal);
+    font: inherit;
+}
+
+.filtros-catalogo input:focus-visible,
+.filtros-catalogo select:focus-visible {
+    outline: 2px solid var(--color-secundario);
+    outline-offset: 2px;
+}
+
+.filtros-catalogo button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-acento);
+    color: #FFFFFF;
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filtros-catalogo button:hover {
+    background-color: var(--color-principal);
+}
+
+.filtros-catalogo button:focus-visible {
+    outline: 2px solid var(--color-secundario);
+    outline-offset: 3px;
+}
+
+
+#contador-resultados {
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+#sin-resultados {
+    padding: 15px;
+    margin: 15px 0;
+    background-color: var(--color-superficie);
+    border-left: 4px solid var(--color-acento);
+    border-radius: 5px;
+}
+
+
+#contador-resultados[hidden],
+#sin-resultados[hidden] {
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .filtros-catalogo {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filtros-catalogo input,
+    .filtros-catalogo select,
+    .filtros-catalogo button {
+        width: 100%;
+        box-sizing: border-box;
+    }
 
 }

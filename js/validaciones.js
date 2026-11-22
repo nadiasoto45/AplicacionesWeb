@@ -187,3 +187,122 @@ if (formularioRegistro) {
         mensajeExito.textContent = "";
     });
 }
+/* validacion de catalogo-busqueda y filtro - punto 7 */
+const tarjetas = document.querySelectorAll(".planta-card");
+
+if (tarjetas.length > 0) {
+
+    /*constantes para los elementos del DOM*/
+    const buscador = document.querySelector("#buscar-planta");
+    const filtroCategoria = document.querySelector("#filtrar-categoria");
+    const botonLimpiar = document.querySelector("#limpiar-filtros");
+    const contadorResultados = document.querySelector("#contador-resultados");
+    const mensajeSinResultados = document.querySelector("#sin-resultados");
+    const ordenarSelect = document.querySelector("#ordenar-planta");
+    /*funciones*/
+    function filtrarPlantas() {
+
+        const textoBusqueda = buscador.value.toLowerCase().trim();
+        const categoriaSeleccionada = filtroCategoria.value;
+
+        let cantidadVisible = 0;
+
+        tarjetas.forEach(function (tarjeta) {
+
+            const nombre = tarjeta.querySelector(".nombre-planta").textContent.toLowerCase();
+            const categoria = tarjeta.querySelector(".categoria").textContent;
+
+            const coincideNombre = nombre.includes(textoBusqueda);
+            const coincideCategoria = categoriaSeleccionada === "" || categoria === categoriaSeleccionada;
+
+            if (coincideNombre && coincideCategoria) {
+                tarjeta.style.display = "";
+                cantidadVisible++;
+            } else {
+                tarjeta.style.display = "none";
+            }
+
+        });
+
+        const hayFiltrosActivos = textoBusqueda !== "" || categoriaSeleccionada !== "";
+
+        contadorResultados.hidden = !hayFiltrosActivos;
+        mensajeSinResultados.hidden = !hayFiltrosActivos || cantidadVisible > 0;
+
+        if (hayFiltrosActivos) {
+            contadorResultados.textContent = "Plantas encontradas: " + cantidadVisible;
+        }
+
+    }
+    function ordenarPlantas() {
+
+        let tarjetasOrdenadas = Array.from(tarjetas);
+
+        if (ordenarSelect.value === "nombre") {
+
+            tarjetasOrdenadas.sort(function (a, b) {
+
+                const nombreA = a.querySelector(".nombre-planta").textContent;
+                const nombreB = b.querySelector(".nombre-planta").textContent;
+
+                return nombreA.localeCompare(nombreB, "es");
+
+            });
+
+        } else if (ordenarSelect.value === "precio") {
+
+            tarjetasOrdenadas.sort(function (a, b) {
+
+                const precioA = parseFloat(
+                    a.querySelector(".precio").textContent
+                        .replace("Precio:", "")
+                        .replace("€", "")
+                        .trim()
+                        .replace(",", ".")
+                );
+
+                const precioB = parseFloat(
+                    b.querySelector(".precio").textContent
+                        .replace("Precio:", "")
+                        .replace("€", "")
+                        .trim()
+                        .replace(",", ".")
+                );
+
+                return precioA - precioB;
+
+            });
+
+        }
+
+        // Si elegimos el orden original, recuperamos la posición inicial
+        if (ordenarSelect.value === "original") {
+            tarjetasOrdenadas = Array.from(tarjetas);
+        }
+
+        tarjetasOrdenadas.forEach(function (tarjeta) {
+            tarjeta.parentElement.appendChild(tarjeta);
+        });
+
+        filtrarPlantas();
+
+    }
+    /*Eventos*/
+    buscador.addEventListener("input", filtrarPlantas);
+    filtroCategoria.addEventListener("change", filtrarPlantas);
+    ordenarSelect.addEventListener("change", ordenarPlantas);
+
+    botonLimpiar.addEventListener("click", function () {
+
+        buscador.value = "";
+        filtroCategoria.value = "";
+        ordenarSelect.value = "original";
+
+        ordenarPlantas();
+
+    });
+
+    // Mostrar el total inicial de plantas
+    filtrarPlantas();
+
+}
