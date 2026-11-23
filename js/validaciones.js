@@ -1,4 +1,4 @@
-//validación del formilario 
+/*validación del formulario */
 const formularioContacto = document.getElementById("form-contacto");
 if (formularioContacto) {
     formularioContacto.addEventListener("submit", function (event) {
@@ -60,7 +60,7 @@ if (formularioContacto) {
     });
 }
 
-//menu hamburguesa
+/*menu hamburguesa*/
 const botonMenu = document.getElementById("menu-toggle");
 const menu = document.getElementById("menu-principal");
 if (botonMenu && menu) {
@@ -77,8 +77,7 @@ if (botonMenu && menu) {
     });
 }
 
-//validación de login
-
+/*validación de login*/
 
 const formularioLogin = document.getElementById("form-login");
 
@@ -119,7 +118,7 @@ if (formularioLogin) {
 
 }
 
-// validación de registro
+/* validación de registro */
 const formularioRegistro = document.getElementById("form-registro");
 
 if (formularioRegistro) {
@@ -187,110 +186,120 @@ if (formularioRegistro) {
         mensajeExito.textContent = "";
     });
 }
-/* validacion de catalogo-busqueda y filtro - punto 7 */
-const tarjetas = document.querySelectorAll(".planta-card");
+/*Generación dinámica del catalogo- funciones*/
 
-if (tarjetas.length > 0) {
+function crearTarjeta(planta) {
 
-    /*constantes para los elementos del DOM*/
-    const buscador = document.querySelector("#buscar-planta");
-    const filtroCategoria = document.querySelector("#filtrar-categoria");
-    const botonLimpiar = document.querySelector("#limpiar-filtros");
-    const contadorResultados = document.querySelector("#contador-resultados");
-    const mensajeSinResultados = document.querySelector("#sin-resultados");
-    const ordenarSelect = document.querySelector("#ordenar-planta");
-    /*funciones*/
-    function filtrarPlantas() {
+    const tarjeta = document.createElement("article");
+    tarjeta.classList.add("planta-card");
+
+    tarjeta.innerHTML = `
+        <img src="${planta.foto}" alt="${planta.nombre}">
+
+        <h3 class="nombre-planta">${planta.nombre}</h3>
+
+        <p class="categoria">${planta.categoria}</p>
+
+        <p>${planta.notas}</p>
+
+        <p class="precio">Precio: ${planta.precio.toFixed(2).replace(".", ",")} €</p>
+
+        <a href="planta.html" class="catalogo">Ver producto</a>
+    `;
+
+    return tarjeta;
+}
+
+function generarCatalogo(listaPlantas = plantas) {
+
+    const contenedor = document.getElementById("catalogo-grid");
+
+    if (!contenedor || typeof plantas === "undefined") {
+        return;
+    }
+
+    contenedor.innerHTML = "";
+
+    listaPlantas.forEach(function (planta) {
+
+        const tarjeta = crearTarjeta(planta);
+
+        contenedor.appendChild(tarjeta);
+
+    });
+
+}
+
+generarCatalogo();
+
+
+/* modifica 7-  Búsqueda, filtros y ordenamiento desde el array*/
+
+const contenedorCatalogo = document.getElementById("catalogo-grid");
+
+if (contenedorCatalogo && typeof plantas !== "undefined") {
+
+    const buscador = document.getElementById("buscar-planta");
+    const filtroCategoria = document.getElementById("filtrar-categoria");
+    const botonLimpiar = document.getElementById("limpiar-filtros");
+    const contadorResultados = document.getElementById("contador-resultados");
+    const mensajeSinResultados = document.getElementById("sin-resultados");
+    const ordenarSelect = document.getElementById("ordenar-planta");
+
+    function filtrarYOrdenarPlantas() {
 
         const textoBusqueda = buscador.value.toLowerCase().trim();
-        const categoriaSeleccionada = filtroCategoria.value;
+        const categoriaSeleccionada = filtroCategoria.value.toLowerCase();
 
-        let cantidadVisible = 0;
+        let plantasFiltradas = plantas.filter(function (planta) {
 
-        tarjetas.forEach(function (tarjeta) {
+            const coincideNombre = planta.nombre.toLowerCase().includes(textoBusqueda);
 
-            const nombre = tarjeta.querySelector(".nombre-planta").textContent.toLowerCase();
-            const categoria = tarjeta.querySelector(".categoria").textContent;
+            const coincideCategoria =
+                categoriaSeleccionada === "" ||
+                planta.categoria.toLowerCase() === categoriaSeleccionada;
 
-            const coincideNombre = nombre.includes(textoBusqueda);
-            const coincideCategoria = categoriaSeleccionada === "" || categoria === categoriaSeleccionada;
-
-            if (coincideNombre && coincideCategoria) {
-                tarjeta.style.display = "";
-                cantidadVisible++;
-            } else {
-                tarjeta.style.display = "none";
-            }
+            return coincideNombre && coincideCategoria;
 
         });
 
-        const hayFiltrosActivos = textoBusqueda !== "" || categoriaSeleccionada !== "";
-
-        contadorResultados.hidden = !hayFiltrosActivos;
-        mensajeSinResultados.hidden = !hayFiltrosActivos || cantidadVisible > 0;
-
-        if (hayFiltrosActivos) {
-            contadorResultados.textContent = "Plantas encontradas: " + cantidadVisible;
-        }
-
-    }
-    function ordenarPlantas() {
-
-        let tarjetasOrdenadas = Array.from(tarjetas);
-
         if (ordenarSelect.value === "nombre") {
 
-            tarjetasOrdenadas.sort(function (a, b) {
-
-                const nombreA = a.querySelector(".nombre-planta").textContent;
-                const nombreB = b.querySelector(".nombre-planta").textContent;
-
-                return nombreA.localeCompare(nombreB, "es");
-
+            plantasFiltradas.sort(function (a, b) {
+                return a.nombre.localeCompare(b.nombre, "es");
             });
 
         } else if (ordenarSelect.value === "precio") {
 
-            tarjetasOrdenadas.sort(function (a, b) {
-
-                const precioA = parseFloat(
-                    a.querySelector(".precio").textContent
-                        .replace("Precio:", "")
-                        .replace("€", "")
-                        .trim()
-                        .replace(",", ".")
-                );
-
-                const precioB = parseFloat(
-                    b.querySelector(".precio").textContent
-                        .replace("Precio:", "")
-                        .replace("€", "")
-                        .trim()
-                        .replace(",", ".")
-                );
-
-                return precioA - precioB;
-
+            plantasFiltradas.sort(function (a, b) {
+                return a.precio - b.precio;
             });
 
         }
 
-        // Si elegimos el orden original, recuperamos la posición inicial
-        if (ordenarSelect.value === "original") {
-            tarjetasOrdenadas = Array.from(tarjetas);
+        generarCatalogo(plantasFiltradas);
+
+        const hayFiltrosActivos =
+            textoBusqueda !== "" || categoriaSeleccionada !== "";
+
+        contadorResultados.hidden = !hayFiltrosActivos;
+
+        mensajeSinResultados.hidden =
+            !hayFiltrosActivos || plantasFiltradas.length > 0;
+
+        if (hayFiltrosActivos) {
+            contadorResultados.textContent =
+                "Plantas encontradas: " + plantasFiltradas.length;
         }
 
-        tarjetasOrdenadas.forEach(function (tarjeta) {
-            tarjeta.parentElement.appendChild(tarjeta);
-        });
-
-        filtrarPlantas();
-
     }
-    /*Eventos*/
-    buscador.addEventListener("input", filtrarPlantas);
-    filtroCategoria.addEventListener("change", filtrarPlantas);
-    ordenarSelect.addEventListener("change", ordenarPlantas);
+
+    /*eventos*/
+    buscador.addEventListener("input", filtrarYOrdenarPlantas);
+
+    filtroCategoria.addEventListener("change", filtrarYOrdenarPlantas);
+
+    ordenarSelect.addEventListener("change", filtrarYOrdenarPlantas);
 
     botonLimpiar.addEventListener("click", function () {
 
@@ -298,11 +307,12 @@ if (tarjetas.length > 0) {
         filtroCategoria.value = "";
         ordenarSelect.value = "original";
 
-        ordenarPlantas();
+        filtrarYOrdenarPlantas();
 
     });
 
-    // Mostrar el total inicial de plantas
-    filtrarPlantas();
+
+    /*Mostrar todas las plantas*/
+    filtrarYOrdenarPlantas();
 
 }
