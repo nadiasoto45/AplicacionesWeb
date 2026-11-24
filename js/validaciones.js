@@ -201,33 +201,27 @@ function crearTarjeta(planta) {
         <p class="categoria">${planta.categoria}</p>
 
         <p>${planta.notas}</p>
-
-        <p class="precio">Precio: ${planta.precio.toFixed(2).replace(".", ",")} €</p>
-
+        <p class="precio">Precio: $ ${planta.precio.toLocaleString("es-AR")}</p>
         <a href="planta.html?id=${planta.id}" class="catalogo">Ver producto</a>
     `;
 
     return tarjeta;
 }
 
-function generarCatalogo(listaPlantas = plantas) {
+function generarCatalogo(listaPlantas = plantasAPI) {
 
     const contenedor = document.getElementById("catalogo-grid");
 
-    if (!contenedor || typeof plantas === "undefined") {
+    if (!contenedor) {
         return;
     }
 
     contenedor.innerHTML = "";
 
     listaPlantas.forEach(function (planta) {
-
         const tarjeta = crearTarjeta(planta);
-
         contenedor.appendChild(tarjeta);
-
     });
-
 }
 
 generarCatalogo();
@@ -237,7 +231,7 @@ generarCatalogo();
 
 const contenedorCatalogo = document.getElementById("catalogo-grid");
 
-if (contenedorCatalogo && typeof plantas !== "undefined") {
+if (contenedorCatalogo) {
 
     const buscador = document.getElementById("buscar-planta");
     const filtroCategoria = document.getElementById("filtrar-categoria");
@@ -251,7 +245,7 @@ if (contenedorCatalogo && typeof plantas !== "undefined") {
         const textoBusqueda = buscador.value.toLowerCase().trim();
         const categoriaSeleccionada = filtroCategoria.value.toLowerCase();
 
-        let plantasFiltradas = plantas.filter(function (planta) {
+        let plantasFiltradas = plantasAPI.filter(function (planta) {
 
             const coincideNombre = planta.nombre.toLowerCase().includes(textoBusqueda);
 
@@ -311,97 +305,135 @@ if (contenedorCatalogo && typeof plantas !== "undefined") {
 
     });
 
+    /* Cargar catálogo desde la API */
 
-    /*Mostrar todas las plantas*/
-    filtrarYOrdenarPlantas();
+    async function iniciarCatalogo() {
+
+        contenedorCatalogo.innerHTML = "<p>Cargando plantas...</p>";
+
+        try {
+
+            plantasAPI = await obtenerPlantas();
+
+            filtrarYOrdenarPlantas();
+
+        } catch (error) {
+
+            console.error("Error al cargar el catálogo:", error);
+
+            contenedorCatalogo.innerHTML =
+                "<p>No se pudieron cargar las plantas. Intentá nuevamente más tarde.</p>";
+
+        }
+    }
+
+    iniciarCatalogo();
 
 }
-/* Generación dinámica de la ficha de planta- entrega 8 */
+
+/* Ficha dinámica desde la API - Entrega 9 */
 
 const fichaPlanta = document.getElementById("ficha-planta");
 
-if (fichaPlanta && typeof plantas !== "undefined") {
+if (fichaPlanta) {
 
-    // Obtener el ID que llega desde la URL
-    const parametrosURL = new URLSearchParams(window.location.search);
-    const idPlanta = Number(parametrosURL.get("id"));
-    const plantaSeleccionada = plantas.find(function (planta) {
-        return planta.id === idPlanta;
-    });
+    async function iniciarFicha() {
 
-    if (plantaSeleccionada) {
+        document.getElementById("estado-ficha").textContent =
+            "Cargando planta...";
 
-        document.getElementById("nombre-planta").textContent =
-            plantaSeleccionada.nombre;
+        try {
 
-        document.getElementById("descripcion-planta").textContent =
-            plantaSeleccionada.notas;
+            const plantas = await obtenerPlantas();
 
-        const foto = document.getElementById("foto-planta");
-        foto.src = plantaSeleccionada.foto;
-        foto.alt = plantaSeleccionada.nombre;
-        const especificaciones = document.getElementById("datos-especificaciones");
+            const parametrosURL = new URLSearchParams(window.location.search);
+            const idPlanta = Number(parametrosURL.get("id"));
 
-        especificaciones.innerHTML = `
-            <tr>
-                <th>Nombre científico</th>
-                <td>${plantaSeleccionada.nombreCientifico}</td>
-            </tr>
-            <tr>
-                <th>Categoría</th>
-                <td>${plantaSeleccionada.categoria}</td>
-            </tr>
-            <tr>
-                <th>Precio</th>
-                <td>${plantaSeleccionada.precio.toFixed(2)} €</td>
-            </tr>
-            <tr>
-                <th>Stock</th>
-                <td>${plantaSeleccionada.stock}</td>
-            </tr>
-            <tr>
-                <th>Apta para mascotas</th>
-                <td>${plantaSeleccionada.aptaMascotas ? "Sí" : "No"}</td>
-            </tr>
-        `;
+            const plantaSeleccionada = plantas.find(function (planta) {
+                return planta.id === idPlanta;
+            });
 
-        const listaCuidados = document.getElementById("lista-cuidados");
+            if (!plantaSeleccionada) {
+                fichaPlanta.innerHTML = "<p>No se encontró la planta solicitada.</p>";
+                return;
+            }
+            document.getElementById("estado-ficha").textContent = "";
+            document.getElementById("nombre-planta").textContent =
+                plantaSeleccionada.nombre;
 
-        listaCuidados.innerHTML = `
-            <li>Luz: ${plantaSeleccionada.luz}</li>
-            <li>Riego: ${plantaSeleccionada.riego.join(", ")}</li>
-        `;
+            document.getElementById("descripcion-planta").textContent =
+                plantaSeleccionada.notas || "Sin descripción disponible.";
 
-    } else {
-        fichaPlanta.innerHTML = "<h2>No se encontró la planta solicitada.</h2>";
+            const foto = document.getElementById("foto-planta");
+            foto.src = plantaSeleccionada.foto;
+            foto.alt = plantaSeleccionada.nombre;
+
+            document.getElementById("datos-especificaciones").innerHTML = `
+                <tr><th>Nombre científico</th><td>${plantaSeleccionada.nombreCientifico}</td></tr>
+                <tr><th>Categoría</th><td>${plantaSeleccionada.categoria}</td></tr>
+                <tr><th>Precio</th><td>$ ${plantaSeleccionada.precio.toLocaleString("es-AR")}</td></tr>
+                <tr><th>Stock</th><td>${plantaSeleccionada.stock}</td></tr>
+                <tr><th>Apta para mascotas</th><td>${plantaSeleccionada.aptaMascotas ? "Sí" : "No"}</td></tr>
+            `;
+
+            document.getElementById("lista-cuidados").innerHTML = `
+                <li>Luz: ${plantaSeleccionada.luz}</li>
+                <li>Riego: ${plantaSeleccionada.riego}</li>
+            `;
+
+        } catch (error) {
+            console.error(error);
+            document.getElementById("estado-ficha").textContent =
+                "No se pudo cargar la planta. Intentá nuevamente más tarde.";
+        }
     }
+
+    iniciarFicha();
 }
 
-/* Generación dinámica de la tabla de administración */
+/* Tabla de administración desde la API - Entrega 9 */
 
 const cuerpoTabla = document.getElementById("tabla-plantas-body");
 
-if (cuerpoTabla && typeof plantas !== "undefined") {
+if (cuerpoTabla) {
 
-    plantas.forEach(function (planta) {
+    async function iniciarTabla() {
 
-        const fila = document.createElement("tr");
+        cuerpoTabla.innerHTML =
+            "<tr><td colspan='7'>Cargando plantas...</td></tr>";
 
-        fila.innerHTML = `
-            <td>${planta.id}</td>
-            <td>${planta.nombre}</td>
-            <td>${planta.nombreCientifico}</td>
-            <td>${planta.categoria}</td>
-            <td>${planta.precio.toFixed(2).replace(".", ",")} €</td>
-            <td>${planta.stock}</td>
-            <td>
-                <a href="planta-form.html?id=${planta.id}" class="accion-editar">Editar</a>
-                <button type="button" class="accion-eliminar">Eliminar</button>
-            </td>
-        `;
+        try {
 
-        cuerpoTabla.appendChild(fila);
+            const plantas = await obtenerPlantas();
 
-    });
+            cuerpoTabla.innerHTML = "";
 
+            plantas.forEach(function (planta) {
+
+                const fila = document.createElement("tr");
+
+                fila.innerHTML = `
+                    <td>${planta.id}</td>
+                    <td>${planta.nombre}</td>
+                    <td>${planta.nombreCientifico}</td>
+                    <td>${planta.categoria}</td>
+                    <td>$ ${planta.precio.toLocaleString("es-AR")}</td>
+                    <td>${planta.stock}</td>
+                    <td>
+                        <a href="planta-form.html?id=${planta.id}" class="accion-editar">Editar</a>
+                        <button type="button" class="accion-eliminar">Eliminar</button>
+                    </td>
+                `;
+
+                cuerpoTabla.appendChild(fila);
+            });
+
+        } catch (error) {
+            console.error(error);
+            cuerpoTabla.innerHTML =
+                "<tr><td colspan='7'>No se pudieron cargar las plantas.</td></tr>";
+        }
+    }
+
+    iniciarTabla();
 }

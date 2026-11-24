@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/estilos.css">
     <script src="js/datos.js" defer></script>
+    <script src="js/api.js" defer></script>
     <script src="js/validaciones.js" defer></script>
 </head>
-<body>  
-     <header>
+
+<body>
+    <header>
         <h1>Vivero Raíz</h1>
-        <img class="logo"src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
-         <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
+        <img class="logo" src="img/Logo_Vivero.png" alt="Logo de Vivero Raíz">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"
             aria-controls="menu-principal">
             ☰
         </button>
@@ -26,48 +29,49 @@
                 <li><a href="contacto.html" class="header-link">Contacto</a></li>
             </ul>
         </nav>
-    </header>    
-<main id="ficha-planta">
-    <h2>Ficha de las plantas</h2>
+    </header>
+    <main id="ficha-planta">
+        <h2>Ficha de las plantas</h2>
+        <p id="estado-ficha"></p>
 
-    <h3 id="nombre-planta"></h3>
+        <h3 id="nombre-planta"></h3>
 
-    <h4>Descripción:</h4>
-    <p id="descripcion-planta"></p>
+        <h4>Descripción:</h4>
+        <p id="descripcion-planta"></p>
 
-    <div class="imagenes">
-        <img id="foto-planta" src="" alt="">
-    </div>
+        <div class="imagenes">
+            <img id="foto-planta" src="" alt="">
+        </div>
 
-    <article class="especificaciones">
-        <h4>Especificaciones:</h4>
-        <table>
-            <tbody id="datos-especificaciones">
-            </tbody>
-        </table>
-    </article>
+        <article class="especificaciones">
+            <h4>Especificaciones:</h4>
+            <table>
+                <tbody id="datos-especificaciones">
+                </tbody>
+            </table>
+        </article>
 
-    <article class="cuidados">
-        <h4>Cuidados:</h4>
-        <ul id="lista-cuidados">
-        </ul>
-    </article>
-</main>
-<footer>
-    <div class="footer-content"> 
-    <h3> Redes Sociales</h3>
-    <ul>
-        <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
-        <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
-    </ul>
-    </div>
-    <br>
-    <br>
-    <div class="footer-bottom">
-    <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
-    </div>
+        <article class="cuidados">
+            <h4>Cuidados:</h4>
+            <ul id="lista-cuidados">
+            </ul>
+        </article>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <h3> Redes Sociales</h3>
+            <ul>
+                <li><a href="https://www.instagram.com/viveroraiz_26/">Instagram</a></li>
+                <li><a href="https://www.Facebook.com/profile.php?id=61594830400583">Facebook</a></li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vivero Raíz. Todos los derechos reservados.</p>
+        </div>
 
-</footer>
+    </footer>
 </body>
 
 </html>
