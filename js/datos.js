@@ -12,7 +12,7 @@ const plantas = [
         fechaIngreso: "2026-10-01",
         aptaMascotas: false,
         etiquetas: ["purificadora", "resistente"],
-        foto: "img/monstera.jpeg",
+        foto: "img/monstera.jpg",
         notas: "Planta de interior de hojas grandes. Necesita luz indirecta y riego moderado."
     },
     {

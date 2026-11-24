@@ -204,7 +204,7 @@ function crearTarjeta(planta) {
 
         <p class="precio">Precio: ${planta.precio.toFixed(2).replace(".", ",")} €</p>
 
-        <a href="planta.html" class="catalogo">Ver producto</a>
+        <a href="planta.html?id=${planta.id}" class="catalogo">Ver producto</a>
     `;
 
     return tarjeta;
@@ -314,5 +314,94 @@ if (contenedorCatalogo && typeof plantas !== "undefined") {
 
     /*Mostrar todas las plantas*/
     filtrarYOrdenarPlantas();
+
+}
+/* Generación dinámica de la ficha de planta- entrega 8 */
+
+const fichaPlanta = document.getElementById("ficha-planta");
+
+if (fichaPlanta && typeof plantas !== "undefined") {
+
+    // Obtener el ID que llega desde la URL
+    const parametrosURL = new URLSearchParams(window.location.search);
+    const idPlanta = Number(parametrosURL.get("id"));
+    const plantaSeleccionada = plantas.find(function (planta) {
+        return planta.id === idPlanta;
+    });
+
+    if (plantaSeleccionada) {
+
+        document.getElementById("nombre-planta").textContent =
+            plantaSeleccionada.nombre;
+
+        document.getElementById("descripcion-planta").textContent =
+            plantaSeleccionada.notas;
+
+        const foto = document.getElementById("foto-planta");
+        foto.src = plantaSeleccionada.foto;
+        foto.alt = plantaSeleccionada.nombre;
+        const especificaciones = document.getElementById("datos-especificaciones");
+
+        especificaciones.innerHTML = `
+            <tr>
+                <th>Nombre científico</th>
+                <td>${plantaSeleccionada.nombreCientifico}</td>
+            </tr>
+            <tr>
+                <th>Categoría</th>
+                <td>${plantaSeleccionada.categoria}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>${plantaSeleccionada.precio.toFixed(2)} €</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>${plantaSeleccionada.stock}</td>
+            </tr>
+            <tr>
+                <th>Apta para mascotas</th>
+                <td>${plantaSeleccionada.aptaMascotas ? "Sí" : "No"}</td>
+            </tr>
+        `;
+
+        const listaCuidados = document.getElementById("lista-cuidados");
+
+        listaCuidados.innerHTML = `
+            <li>Luz: ${plantaSeleccionada.luz}</li>
+            <li>Riego: ${plantaSeleccionada.riego.join(", ")}</li>
+        `;
+
+    } else {
+        fichaPlanta.innerHTML = "<h2>No se encontró la planta solicitada.</h2>";
+    }
+}
+
+/* Generación dinámica de la tabla de administración */
+
+const cuerpoTabla = document.getElementById("tabla-plantas-body");
+
+if (cuerpoTabla && typeof plantas !== "undefined") {
+
+    plantas.forEach(function (planta) {
+
+        const fila = document.createElement("tr");
+
+        fila.innerHTML = `
+            <td>${planta.id}</td>
+            <td>${planta.nombre}</td>
+            <td>${planta.nombreCientifico}</td>
+            <td>${planta.categoria}</td>
+            <td>${planta.precio.toFixed(2).replace(".", ",")} €</td>
+            <td>${planta.stock}</td>
+            <td>
+                <a href="planta-form.html?id=${planta.id}" class="accion-editar">Editar</a>
+                <button type="button" class="accion-eliminar">Eliminar</button>
+            </td>
+        `;
+
+        cuerpoTabla.appendChild(fila);
+
+    });
 
 }
