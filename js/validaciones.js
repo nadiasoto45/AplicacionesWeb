@@ -77,7 +77,10 @@ if (botonMenu && menu) {
     });
 }
 
-/*validación de login*/
+/*validación de login con credenciales de admin*/
+
+const emailAdministrador = "admin@viveroraiz.com";
+const passwordAdministrador = "Raiz2026";
 
 const formularioLogin = document.getElementById("form-login");
 
@@ -87,6 +90,9 @@ if (formularioLogin) {
 
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value;
+
+        const mensajeError = document.getElementById("mensaje-error");
+        const mensajeExito = document.getElementById("mensaje-exito");
 
         let errores = [];
 
@@ -99,24 +105,35 @@ if (formularioLogin) {
         if (password === "") {
             errores.push("La contraseña es obligatoria.");
         }
-
-        const mensajeError = document.getElementById("mensaje-error");
-        const mensajeExito = document.getElementById("mensaje-exito");
-
         if (errores.length > 0) {
             mensajeError.textContent = errores.join(" ");
             mensajeError.hidden = false;
             mensajeExito.hidden = true;
-
-        } else {
-            mensajeError.hidden = true;
-            mensajeExito.textContent = "¡Formulario validado correctamente!";
-            mensajeExito.hidden = false;
+            return;
         }
 
-    });
+        if (
+            email === emailAdministrador &&
+            password === passwordAdministrador
+        ) {
 
+            const sesion = {
+                email: email,
+                autenticado: true
+            };
+
+            localStorage.setItem("sesionVivero", JSON.stringify(sesion));
+            window.location.href = "listado.html";
+
+        } else {
+            mensajeError.textContent = "El email o la contraseña son incorrectos.";
+            mensajeError.hidden = false;
+            mensajeExito.hidden = true;
+        }
+    });
 }
+
+
 
 /* validación de registro */
 const formularioRegistro = document.getElementById("form-registro");

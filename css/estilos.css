@@ -249,6 +249,18 @@ form.planta-form {
 .login-registro {
     grid-column: 1 / -1;
     margin: 0;
+    padding: 0 20px 20px;
+    text-align: center;
+}
+
+.login-registro p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+.login-registro a {
+    display: inline-block;
+    margin-top: 8px;
 }
 
 .planta-main .planta-form,
